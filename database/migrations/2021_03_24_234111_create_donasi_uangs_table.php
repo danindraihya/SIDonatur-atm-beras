@@ -13,8 +13,10 @@ class CreateDonasiUangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('donasi_uangs', function (Blueprint $table) {
+        Schema::create('donasi_uang', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('donatur_id')->constrained('donatur');
+            $table->integer('nominal');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateDonasiUangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donasi_uangs');
+        Schema::dropIfExists('donasi_uang');
     }
 }
