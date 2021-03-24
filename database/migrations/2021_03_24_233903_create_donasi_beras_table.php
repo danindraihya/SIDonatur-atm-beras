@@ -15,6 +15,8 @@ class CreateDonasiBerasTable extends Migration
     {
         Schema::create('donasi_beras', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('donatur_id')->constrained('donatur');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
