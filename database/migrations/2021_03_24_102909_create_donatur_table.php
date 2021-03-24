@@ -15,11 +15,12 @@ class CreateDonaturTable extends Migration
     {
         Schema::create('donatur', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('jenis_donatur_id')->unsigned();
+            $table->foreignId('jenis_donatur_id')->constrained('jenis_donatur');
             $table->string('nama');
             $table->string('alamat');
             $table->string('nomor_ponsel');
             $table->timestamps();
+
         });
     }
 
