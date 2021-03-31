@@ -17,7 +17,7 @@ class DonaturController extends Controller
     {
         $listDonatur = Donatur::all();
 
-        return view('home.index')->with('listDonatur', $listDonatur);
+        return view('donatur.index')->with('listDonatur', $listDonatur);
     }
 
     /**
@@ -27,7 +27,7 @@ class DonaturController extends Controller
      */
     public function create()
     {
-        //uy         tregfhgjgkhhkhfbvghgjuyyto 
+        //
     }
 
     /**
@@ -52,8 +52,7 @@ class DonaturController extends Controller
         $donatur->nomor_ponsel = $request->input('nomor_ponsel');
         $donatur->save();
 
-        return redirect('/')->with('success', 'Berhasil menambahkan donatur');
-        
+        return redirect('/donatur')->with('success', 'Berhasil menambahkan donatur');
     }
 
     /**
@@ -94,7 +93,6 @@ class DonaturController extends Controller
             'nomor_ponsel' => 'required'
         ]);
 
-
         $donatur = Donatur::find($request->input('id'));
         $donatur->nama = $request->input('nama');
         $donatur->jenis_donatur_id = $request->input('jenis_donatur');
@@ -102,7 +100,7 @@ class DonaturController extends Controller
         $donatur->nomor_ponsel = $request->input('nomor_ponsel');
         $donatur->save();
 
-        return redirect('/')->with('success', 'Berhasil edit data donatur');
+        return redirect()->back()->with('success', 'Berhasil edit data donatur');
     }
 
     /**
@@ -113,10 +111,8 @@ class DonaturController extends Controller
      */
     public function destroy(Request $request)
     {
-        $donatur = Donatur::find($request->input('id'));
-        $donatur->delete();
+        $donatur = Donatur::find($request->id)->delete();
         
-        return redirect('/')->with('success', 'Berhasil menghapus data donatur');
-
+        return redirect('/donatur')->with('success', 'Berhasil menghapus data donatur');
     }
 }

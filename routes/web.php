@@ -14,7 +14,21 @@ use App\Http\Controllers\DonaturController;
 |
 */
 
-Route::get('/', [DonaturController::class, 'index']);
-Route::post('/tambahDonatur', [DonaturController::class, 'store']);
-Route::put('/editDonatur', [DonaturController::class, 'update']);
-Route::delete('/deleteDonatur', [DonaturController::class, 'destroy']);
+Route::prefix('jenis-donatur')->group(function () {
+
+});
+
+Route::prefix('donatur')->group(function () {
+    Route::get('/', [DonaturController::class, 'index'])->name('donatur.index');
+    Route::post('/store', [DonaturController::class, 'store'])->name('donatur.store');
+    Route::put('/update', [DonaturController::class, 'update'])->name('donatur.update');
+    Route::delete('/destroy', [DonaturController::class, 'destroy'])->name('donatur.destroy');
+});
+
+Route::prefix('donasi-uang')->group(function () {
+
+});
+
+Route::prefix('donasi-beras')->group(function () {
+
+});
