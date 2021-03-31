@@ -15,3 +15,6 @@ use App\Http\Controllers\DonaturController;
 */
 
 Route::get('/', [DonaturController::class, 'index']);
+Route::post('/tambahDonatur', [DonaturController::class, 'store']);
+Route::put('/editDonatur', [DonaturController::class, 'update']);
+Route::delete('/deleteDonatur', [DonaturController::class, 'destroy']);
