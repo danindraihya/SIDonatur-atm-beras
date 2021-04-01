@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisDonaturController;
 use App\Http\Controllers\DonaturController;
-
+use App\Http\Controllers\DonasiUangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,5 +29,10 @@ Route::prefix('donatur')->group(function () {
     Route::put('/update', [DonaturController::class, 'update'])->name('donatur.update');
     Route::delete('/destroy', [DonaturController::class, 'destroy'])->name('donatur.destroy');
 });
-Route::prefix('donasi-uang')->group(function () {});
+Route::prefix('donasi-uang')->group(function () {
+    Route::get('/', [DonasiUangController::class, 'index'])->name('donasi_uang.index');
+    Route::post('/store', [DonasiUangController::class, 'store'])->name('donasi_uang.store');
+    Route::put('/update', [DonasiUangController::class, 'update'])->name('donasi_uang.update');
+    Route::delete('/destroy', [DonasiUangController::class, 'destroy'])->name('donasi_uang.destroy');
+});
 Route::prefix('donasi-beras')->group(function () {});
