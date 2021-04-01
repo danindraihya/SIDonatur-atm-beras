@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JenisDonatur;
-use App\Models\Donatur;
 
-class DonaturController extends Controller
+class JenisDonaturController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class DonaturController extends Controller
      */
     public function index()
     {
-        return view('donatur.index', [
-            'listDonatur' => Donatur::all(),
-            'listJenisDonatur' => JenisDonatur::pluck('label', 'id'),
+        return view('jenis_donatur.index', [
+            'listJenisDonatur' => JenisDonatur::all(),
         ]);
     }
 
@@ -40,20 +38,14 @@ class DonaturController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'jenis_donatur' => 'required',
-            'alamat' => 'required',
-            'nomor_ponsel' => 'required'
+            'label' => 'required',
         ]);
 
-        $donatur = new Donatur;
-        $donatur->nama = $request->input('nama');
-        $donatur->jenis_donatur_id = $request->input('jenis_donatur');
-        $donatur->alamat = $request->input('alamat');
-        $donatur->nomor_ponsel = $request->input('nomor_ponsel');
-        $donatur->save();
+        $jenisDonatur = JenisDonatur::create([
+            'label' => $request->label,
+        ]);
 
-        return redirect()->back()->with('success', 'Berhasil menambahkan donatur');
+        return redirect()->back();
     }
 
     /**
@@ -87,21 +79,11 @@ class DonaturController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, [
-            'nama' => 'required',
-            'jenis_donatur' => 'required',
-            'alamat' => 'required',
-            'nomor_ponsel' => 'required'
+        $jenisDonatur = JenisDonatur::find($request->id)->update([
+            'label' => $request->label,
         ]);
 
-        $donatur = Donatur::find($request->input('id'));
-        $donatur->nama = $request->input('nama');
-        $donatur->jenis_donatur_id = $request->input('jenis_donatur');
-        $donatur->alamat = $request->input('alamat');
-        $donatur->nomor_ponsel = $request->input('nomor_ponsel');
-        $donatur->save();
-
-        return redirect()->back()->with('success', 'Berhasil edit data donatur');
+        return redirect()->back();
     }
 
     /**
@@ -112,8 +94,8 @@ class DonaturController extends Controller
      */
     public function destroy(Request $request)
     {
-        Donatur::find($request->id)->delete();
-        
-        return redirect()->back()->with('success', 'Berhasil menghapus data donatur');
+        JenisDonatur::find($request->id)->delete();
+
+        return redirect()->back();
     }
 }
