@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JenisDonaturController;
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\DonasiUangController;
+use App\Http\Controllers\DonasiBerasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,4 +36,9 @@ Route::prefix('donasi-uang')->group(function () {
     Route::put('/update', [DonasiUangController::class, 'update'])->name('donasi_uang.update');
     Route::delete('/destroy', [DonasiUangController::class, 'destroy'])->name('donasi_uang.destroy');
 });
-Route::prefix('donasi-beras')->group(function () {});
+Route::prefix('donasi-beras')->group(function () {
+    Route::get('/', [DonasiBerasController::class, 'index'])->name('donasi_beras.index');
+    Route::post('/store', [DonasiBerasController::class, 'store'])->name('donasi_beras.store');
+    Route::put('/update', [DonasiBerasController::class, 'update'])->name('donasi_beras.update');
+    Route::delete('/destroy', [DonasiBerasController::class, 'destroy'])->name('donasi_beras.destroy');
+});

@@ -32,7 +32,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('donasi_uang.index') }}" class="nav-link {{ Request::is('donasi-uang') ? 'active' : '' }}" class="nav-link">
                         <i class="nav-icon fas fa-wallet"></i>
                         <p>Donasi Uang</p>
                     </a>
@@ -40,7 +40,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('donasi_beras.index') }}" class="nav-link {{ Request::is('donasi-beras') ? 'active' : '' }}" class="nav-link">
                         <i class="nav-icon fas fa-utensils"></i>
                         <p>Donasi Beras</p>
                     </a>
