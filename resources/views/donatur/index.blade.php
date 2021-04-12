@@ -14,7 +14,8 @@
       <table id="donatur_table" class="display">
         <thead>
           <tr>
-            <th>Nama Donatur</th>
+            <th>Jenis</th>
+            <th>Nama</th>
             <th>Alamat</th>
             <th>Nomor Ponsel</th>
             <th width="20%">Aksi</th>
@@ -23,9 +24,10 @@
         <tbody>
           @foreach ($listDonatur as $donatur)
             <tr>
-            <td>{{$donatur->nama}}</td>
-              <td>{{$donatur->alamat}}</td>
-              <td>{{$donatur->nomor_ponsel}}</td>
+              <td>{{ $donatur->jenisDonatur->label }}</td>
+              <td>{{ $donatur->nama }}</td>
+              <td>{{ $donatur->alamat }}</td>
+              <td>{{ $donatur->nomor_ponsel }}</td>
               <td>  
                 <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $donatur->id;?>" data-nama="<?= $donatur->nama;?>" data-jenis_donatur="<?= $donatur->jenis_donatur_id ?>" data-alamat="<?= $donatur->alamat;?>" data-nomor_ponsel="<?= $donatur->nomor_ponsel;?>">Ubah</a>
                 <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $donatur->id; ?>">Hapus</a>
