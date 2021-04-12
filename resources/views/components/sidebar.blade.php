@@ -1,5 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="{{ route('home') }}" class="brand-link">
+        <i class="fas fa-mosque fa-lg"></i>
         <!-- <img src="{{ asset('img/books.png') }}" class="brand-image" style="opacity: .8"> -->
         <span class="brand-text font-weight-light">SIDonatur - ATM Beras</span>
     </a>
