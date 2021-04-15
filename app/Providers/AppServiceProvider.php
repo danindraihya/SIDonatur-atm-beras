@@ -27,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('rupiah', function($expression) {
             return "Rp<?= number_format($expression, 0, ',', '.'); ?>";
         });
+        Blade::directive('number', function($expression) {
+            return "<?= number_format($expression, 0, ',', '.'); ?>";
+        });
     }
 }

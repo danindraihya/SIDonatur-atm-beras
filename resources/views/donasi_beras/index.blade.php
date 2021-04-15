@@ -17,7 +17,7 @@
         <thead>
           <tr>
             <th>Nama Donatur</th>
-            <th>Jumlah (Kg)</th>
+            <th>Jumlah</th>
             <th width="20%">Aksi</th>
           </tr>
         </thead>
@@ -25,7 +25,7 @@
             @foreach ($donasiBeras as $data)
             <tr>
             <td>{{$data->donatur->nama}}</td>
-              <td>{{$data->jumlah}}</td>
+              <td>@number($data->jumlah) kg</td>
               <td>  
                 <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-jumlah="<?= $data->jumlah;?>">Ubah</a>
                 <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
