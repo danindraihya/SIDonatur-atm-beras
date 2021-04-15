@@ -24,8 +24,8 @@
         <tbody>
             @foreach ($donasiUang as $data)
             <tr>
-            <td>{{$data->donatur->nama}}</td>
-              <td>{{$data->nominal}}</td>
+              <td>{{ $data->donatur->nama }}</td>
+              <td>@rupiah($data->nominal)</td>
               <td>  
                 <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-nominal="<?= $data->nominal;?>">Ubah</a>
                 <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
