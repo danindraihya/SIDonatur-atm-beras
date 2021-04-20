@@ -12,7 +12,7 @@
             <div class="info-box-content">
                 <span class="info-box-text">Jumlah Donatur</span>
                 <span class="info-box-number">
-                    10
+                    {{ $jumlahDonatur }}
                     <small>Orang</small>
                 </span>
             </div>
@@ -26,7 +26,7 @@
             <div class="info-box-content">
                 <span class="info-box-text">Jumlah Donasi Uang Terkumpul</span>
                 <span class="info-box-number">
-                    @rupiah(150000000000)
+                    @rupiah($donasiUang)
                 </span>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="info-box-content">
                 <span class="info-box-text">Jumlah Donasi Beras Terkumpul</span>
                 <span class="info-box-number">
-                    @number(250)
+                    @number($donasiBeras)
                     <small>Kilogram</small>
                 </span>
             </div>
