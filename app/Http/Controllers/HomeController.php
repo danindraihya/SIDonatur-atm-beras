@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Donatur;
 use App\Models\DonasiUang;
 use App\Models\DonasiBeras;
@@ -9,17 +10,29 @@ use Carbon\Carbon;
 
 class HomeController extends Controller
 {
+
     private $chartLabel;
     private $chartDataDonasiUang;
     private $chartDataDonasiBeras;
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
+        $this->middleware('auth');
         $this->chartLabel = collect();
         $this->chartDataDonasiUang = collect();
         $this->chartDataDonasiBeras = collect();
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         $this->generateChartData();
@@ -33,6 +46,7 @@ class HomeController extends Controller
         ];
         return view('home', $data);
     }
+
 
     private function generateChartData()
     {

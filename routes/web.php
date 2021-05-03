@@ -42,3 +42,10 @@ Route::prefix('donasi-beras')->group(function () {
     Route::put('/update', [DonasiBerasController::class, 'update'])->name('donasi_beras.update');
     Route::delete('/destroy', [DonasiBerasController::class, 'destroy'])->name('donasi_beras.destroy');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
