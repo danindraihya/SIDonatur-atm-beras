@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+{{--                <div class="card-header">{{ __('Register') }}</div>--}}
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -49,11 +49,9 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
 
-                        <div class="form-group float-right">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Register') }}
-                            </button>
-                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            {{ __('Register') }}
+                        </button>
                     </form>
                 </div>
             </div>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+{{--                <div class="card-header">{{ __('Login') }}</div>--}}
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -33,11 +33,9 @@
                             @enderror
                         </div>
 
-                        <div class="form-group float-right">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Login') }}
-                            </button>
-                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            {{ __('Login') }}
+                        </button>
                     </form>
                 </div>
             </div>
