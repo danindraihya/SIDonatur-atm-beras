@@ -16,6 +16,7 @@
       <table id="donatur_table" class="display">
         <thead>
           <tr>
+            <th>Tanggal</th>
             <th>Nama Donatur</th>
             <th>Jumlah</th>
             <th width="20%">Aksi</th>
@@ -24,16 +25,17 @@
         <tbody>
             @foreach ($donasiBeras as $data)
             <tr>
-            <td>{{$data->donatur->nama}}</td>
-              <td>@number($data->jumlah) kg</td>
-              <td>  
-                <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-jumlah="<?= $data->jumlah;?>">Ubah</a>
-                <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
-              </td>
+                <td>{{ $data->formatted_date }}</td>
+                <td>{{$data->donatur->nama}}</td>
+                <td>@number($data->jumlah) kg</td>
+                <td>
+                    <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-jumlah="<?= $data->jumlah;?>">Ubah</a>
+                    <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
+                </td>
             </tr>
           @endforeach
         </tbody>
-      </table> 
+      </table>
     </div>
   </div>
 
@@ -52,13 +54,13 @@
               {{ Form::select('donatur', $listDonatur, 1, ['class' => 'form-control']) }}
           </div>
           <div class="form-group">
-              {{ Form::label('jumlah', 'Jumlah (Kg)') }}
-              {{ Form::text('jumlah', '', ['class' => 'form-control']) }}            
+              {{ Form::label('jumlah', 'Jumlah (kilogram)') }}
+              {{ Form::text('jumlah', '', ['class' => 'form-control']) }}
           </div>
         </div>
         <div class="modal-footer">
           {{ Form::submit('Tambah', ['class' => 'btn btn-dark btn-sm']) }}
-          {!! Form::close() !!} 
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -77,16 +79,16 @@
           {{ Form::hidden('id', '', ['class' => 'form-id']) }}
           <div class="form-group">
               {{ Form::label('donatur', 'Nama Donatur') }}
-              {{ Form::select('donatur', $listDonatur, '1', ['class' => 'form-control form-donatur']) }}            
+              {{ Form::select('donatur', $listDonatur, '1', ['class' => 'form-control form-donatur']) }}
           </div>
           <div class="form-group">
-              {{ Form::label('jumlah', 'Jumlah (Kg)') }}
-              {{ Form::text('jumlah', '', ['class' => 'form-control form-jumlah']) }}            
+              {{ Form::label('jumlah', 'Jumlah (kilogram)') }}
+              {{ Form::text('jumlah', '', ['class' => 'form-control form-jumlah']) }}
           </div>
         </div>
         <div class="modal-footer">
           {{ Form::submit('Ubah', ['class' => 'btn btn-warning btn-sm']) }}
-          {!! Form::close() !!} 
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -107,7 +109,7 @@
           {!! Form::open(['route' => 'donasi_beras.destroy', 'method' => 'DELETE']) !!}
             {{ Form::hidden('id', '', ['class' => 'form-id']) }}
             {{ Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm']) }}
-          {!! Form::close() !!} 
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -127,11 +129,11 @@
       const value_id = $(this).data('id');
       const value_donatur = $(this).data('donatur');
       const value_jumlah = $(this).data('jumlah');
-      
+
       $('.form-id').val(value_id);
       $('.form-donatur').val(value_donatur).trigger('change');
       $('.form-jumlah').val(value_jumlah);
-      
+
       $('#modalUbahDonasiBeras').modal('show');
     });
 

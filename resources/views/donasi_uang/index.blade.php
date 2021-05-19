@@ -5,37 +5,39 @@
 @endsection
 
 @section('ext')
-  <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTambahDonasiUang">
-    Tambah Donasi Uang
-  </button>
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTambahDonasiUang">
+        Tambah Donasi Uang
+    </button>
 @endsection
 
 @section('content')
 <div class="card">
     <div class="card-body">
-      <table id="donatur_table" class="display">
-        <thead>
-          <tr>
-            <th>Nama Donatur</th>
-            <th>Nominal</th>
-            <th width="20%">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($donasiUang as $data)
-            <tr>
-              <td>{{ $data->donatur->nama }}</td>
-              <td>@rupiah($data->nominal)</td>
-              <td>  
-                <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-nominal="<?= $data->nominal;?>">Ubah</a>
-                <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table> 
+        <table id="donatur_table" class="display">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Nama Donatur</th>
+                    <th>Nominal</th>
+                    <th width="20%">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($donasiUang as $data)
+                    <tr>
+                        <td>{{ $data->formatted_date }}</td>
+                        <td>{{ $data->donatur->nama }}</td>
+                        <td>@rupiah($data->nominal)</td>
+                        <td>
+                            <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-nominal="<?= $data->nominal;?>">Ubah</a>
+                            <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-  </div>
+</div>
 
   <!-- Modal Tambah Donatur -->
   <div class="modal fade" id="modalTambahDonasiUang" tabindex="-1" aria-labelledby="modalTambahDonasiUangLabel" aria-hidden="true">
@@ -53,12 +55,12 @@
           </div>
           <div class="form-group">
               {{ Form::label('nominal', 'Nominal') }}
-              {{ Form::text('nominal', '', ['class' => 'form-control']) }}            
+              {{ Form::text('nominal', '', ['class' => 'form-control']) }}
           </div>
         </div>
         <div class="modal-footer">
           {{ Form::submit('Tambah', ['class' => 'btn btn-dark btn-sm']) }}
-          {!! Form::close() !!} 
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -77,16 +79,16 @@
           {{ Form::hidden('id', '', ['class' => 'form-id']) }}
           <div class="form-group">
               {{ Form::label('donatur', 'Nama Donatur') }}
-              {{ Form::select('donatur', $listDonatur, '1', ['class' => 'form-control form-donatur']) }}            
+              {{ Form::select('donatur', $listDonatur, '1', ['class' => 'form-control form-donatur']) }}
           </div>
           <div class="form-group">
               {{ Form::label('nominal', 'Nominal') }}
-              {{ Form::text('nominal', '', ['class' => 'form-control form-nominal']) }}            
+              {{ Form::text('nominal', '', ['class' => 'form-control form-nominal']) }}
           </div>
         </div>
         <div class="modal-footer">
           {{ Form::submit('Ubah', ['class' => 'btn btn-warning btn-sm']) }}
-          {!! Form::close() !!} 
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -107,7 +109,7 @@
           {!! Form::open(['route' => 'donasi_uang.destroy', 'method' => 'DELETE']) !!}
             {{ Form::hidden('id', '', ['class' => 'form-id']) }}
             {{ Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm']) }}
-          {!! Form::close() !!} 
+          {!! Form::close() !!}
         </div>
       </div>
     </div>
@@ -127,11 +129,11 @@
       const value_id = $(this).data('id');
       const value_donatur = $(this).data('donatur');
       const value_nominal = $(this).data('nominal');
-      
+
       $('.form-id').val(value_id);
       $('.form-donatur').val(value_donatur).trigger('change');
       $('.form-nominal').val(value_nominal);
-      
+
       $('#modalUbahDonasiUang').modal('show');
     });
 
