@@ -4,7 +4,7 @@
         <!-- <img src="{{ asset('img/books.png') }}" class="brand-image" style="opacity: .8"> -->
         <span class="brand-text font-weight-light">SIDonatur - ATM Beras</span>
     </a>
-      
+
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -49,7 +49,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('laporan.index') }}" class="nav-link {{ (Request::is('laporan') || Request::is('laporan/*')) ? 'active' : '' }}">
                         <i class="nav-icon far fa-chart-bar"></i>
                         <p>Laporan</p>
                     </a>
