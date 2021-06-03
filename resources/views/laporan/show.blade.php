@@ -6,6 +6,13 @@
     <div class="card">
         <div class="card-header">
             <strong>Donasi Uang</strong>
+            <form action="{{ route('laporan.cetak') }}" method="post">
+                @csrf
+                <input type="hidden" name="date" value=<?= $date; ?>>
+                <input type="hidden" name="startDate" value=<?= $date->startOfWeek()->toDateString(); ?>>
+                <input type="hidden" name="endDate" value=<?= $date->endOfWeek()->toDateString(); ?>>
+                <button type="submit">Cetak</button>
+            </form>
         </div>
         <div class="card-body">
             <table class="table table-bordered border-primary mb-3">

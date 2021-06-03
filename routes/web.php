@@ -54,5 +54,6 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('laporan')->group(function () {
         Route::get('/', [LaporanController::class, 'index'])->name('laporan.index');
         Route::post('/show', [LaporanController::class, 'show'])->name('laporan.show');
+        Route::post('/cetak', [LaporanController::class, 'cetak'])->name('laporan.cetak');
     });
 });
