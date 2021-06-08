@@ -29,8 +29,8 @@
                         <td>{{ $data->donatur->nama }}</td>
                         <td>@rupiah($data->nominal)</td>
                         <td>
-                            <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-nominal="<?= $data->nominal;?>">Ubah</a>
-                            <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
+                            <a href="#" class="btn btn-outline-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-nominal="<?= $data->nominal;?>"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="#" class="btn btn-outline-danger btn-sm btn-delete" data-id="<?= $data->id; ?>"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 @endforeach

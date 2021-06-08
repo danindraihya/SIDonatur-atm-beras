@@ -29,8 +29,8 @@
                 <td>{{$data->donatur->nama}}</td>
                 <td>@number($data->jumlah) kg</td>
                 <td>
-                    <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-jumlah="<?= $data->jumlah;?>">Ubah</a>
-                    <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $data->id; ?>">Hapus</a>
+                    <a href="#" class="btn btn-outline-warning btn-sm btn-edit" data-id="<?= $data->id;?>" data-donatur="<?= $data->donatur->id;?>" data-jumlah="<?= $data->jumlah;?>"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="#" class="btn btn-outline-danger btn-sm btn-delete" data-id="<?= $data->id; ?>"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
           @endforeach

@@ -1,35 +1,46 @@
 @extends('layouts.base')
 
-@section('title', 'Laporan')
-
-@section('ext')
-    <form action="{{ route('laporan.cetak') }}" method="POST">
-        @csrf
-        <input type="hidden" name="date" value=<?= $date; ?>>
-        <input type="hidden" name="startDate" value=<?= $date->startOfWeek()->toDateString(); ?>>
-        <input type="hidden" name="endDate" value=<?= $date->endOfWeek()->toDateString(); ?>>
-        <button class="btn btn-dark">Cetak Laporan</button>
-    </form>
-@endsection
+@section('title', 'Detail Informasi Donatur')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <strong>Donasi Uang</strong>
+            <strong>Data Donatur</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th width="25%">Jenis</th>
+                    <td>{{ $donatur->jenisDonatur->label }}</td>
+                </tr>
+                <tr>
+                    <th>Nama</th>
+                    <td>{{ $donatur->nama }}</td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>{{ $donatur->alamat }}</td>
+                </tr>
+                <tr>
+                    <th>Nomor Ponsel</th>
+                    <td>{{ $donatur->nomor_ponsel }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <strong>Data Donasi Uang</strong>
         </div>
         <div class="card-body">
             <table class="table table-bordered border-primary mb-3">
                 <tr>
-                    <th width="25%">Periode</th>
-                    <td>{{ $date->startOfWeek()->isoFormat('dddd, D MMM Y') }} s.d. {{ $date->endOfWeek()->isoFormat('dddd, D MMM Y') }}</td>
-                </tr>
-                <tr>
-                    <th>Jumlah Donasi</th>
-                    <td>{{ $donasiUang->count() }}</td>
+                    <th width="25%">Jumlah Donasi</th>
+                    <td>{{ $donatur->listDonasiUang->count() }}</td>
                 </tr>
                 <tr>
                     <th>Total Donasi</th>
-                    <td>@rupiah($donasiUang->sum('nominal'))</td>
+                    <td>@rupiah($donatur->listDonasiUang->sum('nominal'))</td>
                 </tr>
             </table>
             <table id="donasi_uang_table" class="display">
@@ -42,7 +53,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($donasiUang as $data)
+                @foreach ($donatur->listDonasiUang as $data)
                     <tr>
                         <td>{{ $data->formatted_date }}</td>
                         <td>{{ $data->donatur->jenisDonatur->label }}</td>
@@ -54,24 +65,19 @@
             </table>
         </div>
     </div>
-
     <div class="card">
         <div class="card-header">
-            <strong>Donasi Beras</strong>
+            <strong>Data Donasi Beras</strong>
         </div>
         <div class="card-body">
             <table class="table table-bordered border-primary mb-3">
                 <tr>
-                    <th width="25%">Periode</th>
-                    <td>{{ $date->startOfWeek()->isoFormat('dddd, D MMM Y') }} s.d. {{ $date->endOfWeek()->isoFormat('dddd, D MMM Y') }}</td>
-                </tr>
-                <tr>
-                    <th>Jumlah Donasi</th>
-                    <td>{{ $donasiBeras->count() }}</td>
+                    <th width="25%">Jumlah Donasi</th>
+                    <td>{{ $donatur->listDonasiBeras->count() }}</td>
                 </tr>
                 <tr>
                     <th>Total Donasi</th>
-                    <td>{{ $donasiBeras->sum('jumlah') }} kilogram</td>
+                    <td>{{ $donatur->listDonasiBeras->sum('jumlah') }} kilogram</td>
                 </tr>
             </table>
             <table id="donasi_beras_table" class="display">
@@ -84,7 +90,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($donasiBeras as $data)
+                @foreach ($donatur->listDonasiBeras as $data)
                     <tr>
                         <td>{{ $data->formatted_date }}</td>
                         <td>{{ $data->donatur->jenisDonatur->label }}</td>

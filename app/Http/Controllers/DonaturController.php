@@ -64,7 +64,9 @@ class DonaturController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('donatur.show', [
+            'donatur' => Donatur::find($id),
+        ]);
     }
 
     /**
@@ -113,7 +115,7 @@ class DonaturController extends Controller
     public function destroy(Request $request)
     {
         Donatur::find($request->id)->delete();
-        
+
         return redirect()->back()->with('success', 'Berhasil menghapus data donatur');
     }
 }

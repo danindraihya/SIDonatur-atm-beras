@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('donatur')->group(function () {
         Route::get('/', [DonaturController::class, 'index'])->name('donatur.index');
+        Route::get('/show/{id}', [DonaturController::class, 'show'])->name('donatur.show');
         Route::post('/store', [DonaturController::class, 'store'])->name('donatur.store');
         Route::put('/update', [DonaturController::class, 'update'])->name('donatur.update');
         Route::delete('/destroy', [DonaturController::class, 'destroy'])->name('donatur.destroy');

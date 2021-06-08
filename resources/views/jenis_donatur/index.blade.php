@@ -23,13 +23,13 @@
                     <tr>
                     <td>{{$jenisDonatur->label}}</td>
                     <td>
-                        <a href="#" class="btn btn-warning btn-sm btn-edit" data-id="<?= $jenisDonatur->id;?>" data-label="<?= $jenisDonatur->label;?>">Ubah</a>
-                        <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="<?= $jenisDonatur->id; ?>">Hapus</a>
+                        <a href="#" class="btn btn-outline-warning btn-sm btn-edit" data-id="<?= $jenisDonatur->id;?>" data-label="<?= $jenisDonatur->label;?>"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="#" class="btn btn-outline-danger btn-sm btn-delete" data-id="<?= $jenisDonatur->id; ?>"><i class="far fa-trash-alt"></i></a>
                     </td>
                     </tr>
                 @endforeach
                 </tbody>
-            </table> 
+            </table>
         </div>
     </div>
 
@@ -45,12 +45,12 @@
                     {!! Form::open(['route' => 'jenis_donatur.store', 'method' => 'POST']) !!}
                     <div class="form-group">
                         {{ Form::label('label', 'Label') }}
-                        {{ Form::text('label', '', ['class' => 'form-control']) }}            
+                        {{ Form::text('label', '', ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="modal-footer">
                     {{ Form::submit('Tambah', ['class' => 'btn btn-dark btn-sm']) }}
-                    {!! Form::close() !!} 
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -69,12 +69,12 @@
                     {{ Form::hidden('id', '', ['class' => 'form-id']) }}
                     <div class="form-group">
                         {{ Form::label('label', 'Label') }}
-                        {{ Form::text('label', '', ['class' => 'form-control form-label']) }}            
+                        {{ Form::text('label', '', ['class' => 'form-control form-label']) }}
                     </div>
                 </div>
                 <div class="modal-footer">
                     {{ Form::submit('Ubah', ['class' => 'btn btn-warning btn-sm']) }}
-                    {!! Form::close() !!} 
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                 {!! Form::open(['route' => 'jenis_donatur.destroy', 'method' => 'DELETE']) !!}
                 {{ Form::hidden('id', '', ['class' => 'form-id']) }}
                 {{ Form::submit('Hapus', ['class' => 'btn btn-danger btn-sm']) }}
-                {!! Form::close() !!} 
+                {!! Form::close() !!}
             </div>
         </div>
         </div>
@@ -112,10 +112,10 @@
         $('.btn-edit').on('click', function() {
             const value_id = $(this).data('id');
             const value_label = $(this).data('label');
-            
+
             $('.form-id').val(value_id);
             $('.form-label').val(value_label);
-            
+
             $('#modalUbahJenisDonatur').modal('show');
         });
 

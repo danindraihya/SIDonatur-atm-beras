@@ -25,7 +25,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route('donatur.index') }}" class="nav-link {{ Request::is('donatur') ? 'active' : '' }}">
+                    <a href="{{ route('donatur.index') }}" class="nav-link {{ (Request::is('donatur') || Request::is('donatur/*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Donatur</p>
                     </a>
