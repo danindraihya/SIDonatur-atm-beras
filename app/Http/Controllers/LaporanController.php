@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use PDF;
+use \PDF;
 
 class LaporanController extends Controller
 {
@@ -41,10 +41,18 @@ class LaporanController extends Controller
 
     public function cetak(Request $request)
     {
-        $donasiUang = DonasiUang::whereBetween('created_at', [$request->startDate, $request->endDate])->get();
-        $donasiBeras = DonasiBeras::whereBetween('created_at', [$request->startDate, $request->endDate])->get();
-        
-        $pdf = PDF::loadview('laporan.cetak', ['donasiUang' => $donasiUang, 'donasiBeras' => $donasiBeras, 'startDate' => $request->startDate, 'endDate' => $request->endDate]);
-        return $pdf->stream("invoice.pdf");
+        $data = [
+            'donasiUang' => DonasiUang::whereBetween('created_at', [$request->startDate, $request->endDate])->get(),
+            'donasiBeras' => DonasiBeras::whereBetween('created_at', [$request->startDate, $request->endDate])->get(),
+            'startDate' => $request->startDate,
+            'endDate' => $request->endDate,
+        ];
+        $pdf = PDF::loadview('laporan.cetak', $data)
+            ->setPaper('a4', 'portrait')
+            ->setOptions([
+                'isHtml5ParserEnabled' => true
+            ]);
+//        return view('laporan.cetak', $data);
+        return $pdf->stream("Laporan.pdf");
     }
 }

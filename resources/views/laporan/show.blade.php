@@ -6,8 +6,8 @@
     <form action="{{ route('laporan.cetak') }}" method="POST">
         @csrf
         <input type="hidden" name="date" value=<?= $date; ?>>
-        <input type="hidden" name="startDate" value=<?= $date->startOfWeek()->toDateString(); ?>>
-        <input type="hidden" name="endDate" value=<?= $date->endOfWeek()->toDateString(); ?>>
+        <input type="hidden" name="startDate" value=<?= $date->startOfWeek(); ?>>
+        <input type="hidden" name="endDate" value=<?= $date->endOfWeek(); ?>>
         <button class="btn btn-dark">Cetak Laporan</button>
     </form>
 @endsection
